@@ -57,7 +57,12 @@ const app = {
     /*dodawanie delkaracji*/
     thisApp.initData();
     thisApp.initCart();
+    thisApp.initPages();
   },
+  initPages: function () {
+    const thisApp = this;
+    thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
+  }
 };
 /*DEKLARACJA APP*/
 app.init();
