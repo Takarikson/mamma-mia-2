@@ -411,7 +411,7 @@
         singleProduct.getData();
         console.log(singleProduct);
 
-        payload.products.push(singleProduct); // zwrucony wnika dodany do tablicy payload.products
+        payload.products.push(singleProduct); // zwrócony wnika dodany do tablicy payload.products
         console.log(payload.products);
 
       }
@@ -499,6 +499,19 @@
         event.preventDefault();
         thisCartProduct.remove();
       });
+    }
+    getData() {
+      const thisCartProduct = this;
+
+      const productData = {
+        id: thisCartProduct.id,
+        amount: thisCartProduct.amount,
+        price: thisCartProduct.price,
+        priceSingle: thisCartProduct.priceSingle,
+        params: thisCartProduct.params,
+      };
+
+      return productData;
     }
   } //zamkniecie CartProduct
   const app = {
