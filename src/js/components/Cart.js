@@ -137,12 +137,8 @@ export class Cart {
     };
 
     for (let singleProduct of thisCart.products) {
-      singleProduct.getData();
-      console.log(singleProduct);
-
-      payload.products.push(singleProduct); // zwrucony wnika dodany do tablicy payload.products
-      console.log(payload.products);
-
+      const productData = singleProduct.getData();
+      payload.products.push(productData);
     }
 
     const options = { // opcje które skonfigurują zapytanie
