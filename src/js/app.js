@@ -1,6 +1,7 @@
 import { Product } from './components/Product.js';
 import { Cart } from './components/Cart.js';
 import { select, settings, classNames } from './settings.js';
+import { Booking } from './components/Booking.js';
 
 const app = {
   initMenu: function () {
@@ -58,6 +59,7 @@ const app = {
     thisApp.initPages();
     thisApp.initData();
     thisApp.initCart();
+    thisApp.initBooking();
   },
   initPages: function () {
     const thisApp = this;
@@ -93,7 +95,6 @@ const app = {
     }
 
   },
-
   activatePage: function (pageId) {
     const thisApp = this;
 
@@ -105,6 +106,13 @@ const app = {
       page.classList.toggle(classNames.pages.active, page.getAttribute('id') == pageId);
     }
     window.location.hash = '#/' + pageId;
+  },
+  initBooking: function () {
+    const thisApp = this;
+
+    const bookingElem = document.querySelector(select.containerOf.booking);
+    thisApp.booking = new Booking(bookingElem);
+
   }
 };
 /*DEKLARACJA APP*/
