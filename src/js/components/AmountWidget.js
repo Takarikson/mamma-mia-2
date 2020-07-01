@@ -28,14 +28,11 @@ export class AmountWidget {
     const thisWidget = this;
 
     const newValue = parseInt(value);
-
     /* validation */
     if (newValue != thisWidget.value && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
-
       thisWidget.value = newValue;
       thisWidget.announce();
     }
-
     thisWidget.input.value = thisWidget.value; // CZEMU TO NIE MOZE BYC ZAPISANE NARAZ z tym w 307?
   }
 
