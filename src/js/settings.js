@@ -1,4 +1,6 @@
 /* global Handlebars */
+
+
 export const select = {
   templateOf: {
     menuProduct: '#template-menu-product',
@@ -98,16 +100,19 @@ export const settings = {
     defaultMin: 1,
     defaultMax: 9,
   },
+
   datePicker: {
-    maxDaysInFuture: 14,
+    maxDaysInFuture: 30,
   },
   cart: {
     defaultDeliveryFee: 20,
   },
+
   booking: {
     tableIdAttribute: 'data-table',
   },
   db: {
+
     url: '//localhost:3131',
     product: 'product',
     order: 'order',
@@ -118,7 +123,9 @@ export const settings = {
     notRepeatParam: 'repeat=false',
     repeatParam: 'repeat_ne=false',
   },
+
 };
+
 
 export const templates = {
   menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),

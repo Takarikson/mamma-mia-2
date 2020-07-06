@@ -6,7 +6,6 @@
   &__wrapper {
     position: relative;
   }
-
 }
 
 .logo {
@@ -14,7 +13,7 @@
   line-height: 1;
 
   &__title {
-    margin: 0 0 $base-size 0;
+    margin: 0 0 $base-size;
     font-size: ($base-size * 4);
     font-family: $font-header;
     font-weight: $font-light;
@@ -23,7 +22,6 @@
     span {
       font-weight: $font-bold;
     }
-
   }
 
   &__subtitle {
@@ -32,7 +30,6 @@
     font-weight: $font-light;
     font-style: italic;
   }
-
 }
 
 .main-nav {
@@ -54,7 +51,5 @@
     &.active {
       background: lighten($color-dark, 75%);
     }
-
   }
-
 }

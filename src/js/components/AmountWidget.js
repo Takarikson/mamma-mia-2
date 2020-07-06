@@ -1,6 +1,6 @@
-import { select, settings } from '../settings.js';
+import {select, settings} from '../settings.js';
 
-import { BaseWidget } from './BaseWidget.js';
+import {BaseWidget} from './BaseWidget.js';
 
 export class AmountWidget extends BaseWidget { // informujemy że klasa jest rozszerzeniem klasy BW czyli będzie z niej dziedziczyć
   constructor(wrapper) {
@@ -20,7 +20,7 @@ export class AmountWidget extends BaseWidget { // informujemy że klasa jest roz
     thisWidget.dom.linkIncrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);
   }
 
-  isValid(newValue) { // metoda nieco nadpisana wzgledem isValid z BW; dla AW setter z BW będzie korzystał z tej nadpisanej wersji
+  isValid(newValue){ // metoda nieco nadpisana wzgledem isValid z BW; dla AW setter z BW będzie korzystał z tej nadpisanej wersji
     return !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax;
   }
 
@@ -28,22 +28,22 @@ export class AmountWidget extends BaseWidget { // informujemy że klasa jest roz
 
     const thisWidget = this;
 
-    thisWidget.dom.input.addEventListener('change', function () {
+    thisWidget.dom.input.addEventListener('change', function() {
       thisWidget.value = thisWidget.dom.input.value;
     });
 
-    thisWidget.dom.linkDecrease.addEventListener('click', function (event) {
+    thisWidget.dom.linkDecrease.addEventListener('click', function(event) {
       event.preventDefault();
       thisWidget.value = --thisWidget.dom.input.value;
     });
 
-    thisWidget.dom.linkIncrease.addEventListener('click', function (event) {
+    thisWidget.dom.linkIncrease.addEventListener('click', function(event) {
       event.preventDefault();
       thisWidget.value = ++thisWidget.dom.input.value;
     });
   }
 
-  renderValue() {
+  renderValue(){
     const thisWidget = this;
 
     thisWidget.dom.input.value = thisWidget.value;

@@ -1,6 +1,5 @@
 {
-  "product": [
-    {
+  "product": [{
       "id": "cake",
       "class": "small",
       "name": "Zio Stefano's Doughnut",
@@ -154,7 +153,7 @@
         "<img class=\"active\" src=\"images/salad/plate.svg\">",
         "<img class=\"ingredients-cucumber\" src=\"images/salad/cucumber.svg\" style=\"z-index: 1;\">",
         "<img class=\"ingredients-tomatoes\" src=\"images/salad/tomatoes.svg\" style=\"z-index: 2;\">",
-        "<img class=\"ingredients-olives\" src=\"images/salad/salad-olives.svg\" style=\"z-index: 3;\">",
+        "<img class=\"ingredients-black_olives\" src=\"images/salad/salad-olives.svg\" style=\"z-index: 3;\">",
         "<img class=\"ingredients-feta\" src=\"images/salad/feta.svg\" style=\"z-index: 4;\">",
         "<img class=\"ingredients-herbs\" src=\"images/salad/herbs.svg\" style=\"z-index: 5;\">",
         "<img class=\"ingredients-cheese\" src=\"images/salad/cheese.svg\" style=\"z-index: 6;\">",
@@ -175,8 +174,8 @@
               "price": 1,
               "default": true
             },
-            "olives": {
-              "label": "Olives",
+            "black_olives": {
+              "label": "Black olives",
               "price": 1,
               "default": true
             },
@@ -206,7 +205,7 @@
   "event": [
     {
       "id": 1,
-      "date": "2019-01-01",
+      "date": "2020-06-16",
       "hour": "12:30",
       "table": 1,
       "repeat": false,
@@ -214,54 +213,50 @@
       "ppl": 3,
       "starters": []
     },
-    {
+
+{
       "id": 2,
-      "date": "2019-01-01",
+      "date": "2020-06-16",
       "hour": "16:00",
       "table": 3,
       "repeat": "daily",
-      "duration": 2,
+      "duration": 4,
       "ppl": 3,
-      "starters": [
-        "bread",
-        "lemonWater"
-      ]
+      "starters": ["bread", "lemonWater"]
     },
     {
       "id": 3,
-      "date": "2019-01-01",
+      "date": "2020-06-19",
       "hour": "12:00",
       "table": 3,
-      "repeat": "daily",
+      "repeat": false,
       "duration": 2,
       "ppl": 3,
-      "starters": [
-        "bread",
-        "lemonWater"
-      ]
+      "starters": ["bread", "lemonWater"]
     },
     {
       "id": 4,
-      "date": "2019-01-01",
+      "date": "2020-06-16",
       "hour": "13:00",
       "table": 2,
-      "repeat": "daily",
+      "repeat": false,
       "duration": 4,
       "ppl": 3,
       "starters": []
     },
     {
       "id": 5,
-      "date": "2019-01-01",
+      "date": "2020-06-20",
       "hour": "18:00",
       "table": 2,
-      "repeat": "daily",
-      "duration": 2,
+      "repeat": "weekly",
+      "duration": 1,
       "ppl": 3,
-      "starters": [
-        "lemonWater"
-      ]
+      "starters": ["lemonWater"]
     }
   ],
-  "booking": []
+  "booking": [
+   
+    
+  ]
 }

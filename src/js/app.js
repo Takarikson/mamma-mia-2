@@ -1,18 +1,18 @@
-import { Product } from './components/Product.js';
-import { Cart } from './components/Cart.js';
-import { select, settings, classNames } from './settings.js';
-import { Booking } from './components/Booking.js';
+import {Product} from './components/Product.js';
+import {Cart} from './components/Cart.js';
+import {Booking} from './components/Booking.js';
+import {select, settings, classNames} from './settings.js';
 
 const app = {
-  initMenu: function () {
+  initMenu: function() {
     const thisApp = this;
+    //console.log('thisApp.data:', thisApp.data);
 
-    /*Tworzenie instancji dla każdego produktu(w pętli) po obiekcie thisApp.data.products*/
     for (let productData in thisApp.data.products) {
       new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
     }
   },
-  initCart: function () {
+  initCart: function() {
     const thisApp = this;
 
     const cartElem = document.querySelector(select.containerOf.cart);
@@ -20,24 +20,23 @@ const app = {
 
     thisApp.productList = document.querySelector(select.containerOf.menu);
 
-    thisApp.productList.addEventListener('add-to-cart', function (event) {
+    thisApp.productList.addEventListener('add-to-cart', function(event) {
       app.cart.add(event.detail.product);
     });
   },
-  /*Instancja dla każdego produktu*/
-  initData: function () {
-    const thisApp = this;
 
+  initData: function() {
+    const thisApp = this;
     thisApp.data = {};
 
     const url = settings.db.url + '/' + settings.db.product; // w stałej zapisany adres endpointa
 
     fetch(url) // wysyłamy zapytanie do serwera pod podany adres endpointu
-      .then(function (rawResponse) {
+      .then(function(rawResponse) {
         return rawResponse.json(); // odpowiedż z serwera
       })
-      .then(function (parsedResponse) { // otrzymaną odpowiedż konwertujemy z JSON na tablicę // kod w tej f wykona sie dopiero jak otrzyma odp z serwera
-        console.log('parsedResponse', parsedResponse);
+      .then(function(parsedResponse) { // otrzymaną odpowiedż konwertujemy z JSON na tablicę // kod w tej f wykona sie dopiero jak otrzyma odp z serwera
+        //console.log('parsedResponse', parsedResponse);
 
         /* save parsedResponse as thisApp.data.products */
         thisApp.data.products = parsedResponse;
@@ -46,22 +45,25 @@ const app = {
         thisApp.initMenu();
       });
 
-    console.log('thisApp.data', JSON.stringify(thisApp.data));
+    //console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
-  init: function () {
+
+  init: function() {
     const thisApp = this;
-    // console.log('*** App starting ***');
-    // console.log('thisApp:', thisApp);
-    // console.log('classNames:', classNames);
-    // console.log('settings:', settings);
-    // console.log('templates:', templates);
-    /*dodawanie delkaracji*/
+    //console.log('*** App starting ***');
+    //console.log('thisApp:', thisApp);
+    //console.log('classNames:', classNames);
+    //console.log('settings:', settings);
+    //console.log('templates:', templates);
+
     thisApp.initPages();
     thisApp.initData();
+    // wywołanie f initMenu przenosimy na górę do f (parsedResponse) która wykonuje się dopiero po otrzymaniu odp z serwera // czyli wykona sie gdy skrpt otrzyma już liste produktów
     thisApp.initCart();
     thisApp.initBooking();
   },
-  initPages: function () {
+
+  initPages: function(){
     const thisApp = this;
 
     thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
@@ -70,18 +72,18 @@ const app = {
 
     let pagesMatchingHash = [];
 
-    if (window.location.hash.length > 2) {
+    if(window.location.hash.length > 2){
       const idFromHash = window.location.hash.replace('#/', '');
 
-      pagesMatchingHash = thisApp.pages.filter(function (page) {
+      pagesMatchingHash = thisApp.pages.filter(function(page){
         return page.id == idFromHash; // metoda filter zwraca nową tablicę zawierajacą tylko elementy spełniające warunek
       });
     }
 
     thisApp.activatePage(pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages[0].id);
 
-    for (let link of thisApp.navLinks) {
-      link.addEventListener('click', function (event) {
+    for(let link of thisApp.navLinks){
+      link.addEventListener('click', function(event){
         const clickedElement = this;
         event.preventDefault();
         /* get page id from href */
@@ -95,26 +97,28 @@ const app = {
     }
 
   },
-  activatePage: function (pageId) {
+
+  activatePage: function(pageId){
     const thisApp = this;
 
-    for (let link of thisApp.navLinks) {
+    for(let link of thisApp.navLinks){
       link.classList.toggle(classNames.nav.active, link.getAttribute('href') == '#' + pageId);
     }
 
-    for (let page of thisApp.pages) {
+    for(let page of thisApp.pages){
       page.classList.toggle(classNames.pages.active, page.getAttribute('id') == pageId);
     }
     window.location.hash = '#/' + pageId;
   },
-  initBooking: function () {
+
+  initBooking: function(){
     const thisApp = this;
 
-    const bookingElem = document.querySelector(select.containerOf.booking);
-    thisApp.booking = new Booking(bookingElem);
+    const bookingElement = document.querySelector(select.containerOf.booking);
+    thisApp.booking = new Booking (bookingElement);
 
   }
-};
-/*DEKLARACJA APP*/
-app.init();
 
+};
+
+app.init();

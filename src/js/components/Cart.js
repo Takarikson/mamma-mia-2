@@ -1,15 +1,6 @@
-import {
-  select,
-  settings,
-  classNames,
-  templates
-} from '../settings.js';
-import {
-  utils
-} from '../utils.js';
-import {
-  CartProduct
-} from './CartProduct.js';
+import {select, settings, classNames, templates} from '../settings.js';
+import {utils} from '../utils.js';
+import {CartProduct} from './CartProduct.js';
 
 export class Cart {
   constructor(element) {
@@ -52,19 +43,19 @@ export class Cart {
   initActions() {
     const thisCart = this;
 
-    thisCart.dom.toggleTrigger.addEventListener('click', function () {
+    thisCart.dom.toggleTrigger.addEventListener('click', function() {
       thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
     });
 
-    thisCart.dom.productList.addEventListener('updated', function () {
+    thisCart.dom.productList.addEventListener('updated', function() {
       thisCart.update();
     });
 
-    thisCart.dom.productList.addEventListener('remove', function () {
+    thisCart.dom.productList.addEventListener('remove', function() {
       thisCart.remove(event.detail.cartProduct);
     });
 
-    thisCart.dom.form.addEventListener('submit', function () {
+    thisCart.dom.form.addEventListener('submit', function() {
       event.preventDefault();
       thisCart.sendOrder();
     });
@@ -137,8 +128,12 @@ export class Cart {
     };
 
     for (let singleProduct of thisCart.products) {
-      const productData = singleProduct.getData();
-      payload.products.push(productData);
+      singleProduct.getData();
+      console.log(singleProduct);
+
+      payload.products.push(singleProduct); // zwrucony wynik dodany do tablicy payload.products
+      console.log(payload.products);
+
     }
 
     const options = { // opcje które skonfigurują zapytanie
@@ -150,9 +145,9 @@ export class Cart {
     };
 
     fetch(url, options)
-      .then(function (response) {
+      .then(function(response) {
         return response.json();
-      }).then(function (parsedResponse) {
+      }).then(function(parsedResponse) {
         console.log('parsedResponse', parsedResponse);
       });
   }

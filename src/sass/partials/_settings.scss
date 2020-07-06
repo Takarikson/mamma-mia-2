@@ -1,27 +1,20 @@
 /* Variables */
-
 $color-dark: #333;
 $color-light: #fff;
 $color-main: #ff6b6b;
 $color-warning: #f6b93b;
 $color-danger: #e55039;
 $color-success: #78e08f;
-
 $font-header: 'Oswald', sans-serif;
 $font-text: 'Lato', sans-serif;
-
 $font-light: 300;
 $font-normal: 400;
 $font-semibold: 500;
 $font-bold: 700;
-
-$transition: all .3s;
+$transition: all 0.3s;
 $radius: 4px;
-
 $base-size: 12px;
-
 /* Mixins */
-
 @mixin btn($btn-bg, $btn-text, $btn-border) {
   background: $btn-bg;
   color: $btn-text;
@@ -39,30 +32,27 @@ $base-size: 12px;
   &:hover {
     background: lighten($btn-bg, 3%);
   }
-
   // CODE ADDED START
-  &.disabled, &[disabled] {
+  &.disabled,
+  &[disabled] {
     background: desaturate($btn-bg, 100%);
     border-color: desaturate($btn-border, 100%);
     cursor: not-allowed;
   }
   // CODE ADDED END
 }
-
 @mixin flex($flex-direction, $align-items, $justify-content) {
   display: flex;
   flex-direction: $flex-direction;
   align-items: $align-items;
   justify-content: $justify-content;
 }
-
 @mixin center() {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
 @mixin accordion-closed() {
   position: relative;
   overflow: hidden;
@@ -70,20 +60,16 @@ $base-size: 12px;
   max-height: 0;
   transform: translate(0, 50%);
 }
-
 @mixin accordion-open() {
   transform: translate(0, 0);
   max-height: 1000px;
   opacity: 1;
 }
-
 /* Helpers */
-
 .no-spacing {
   margin: 0;
   padding: 0;
 }
-
 @keyframes flipdown {
   0% {
     opacity: 0;

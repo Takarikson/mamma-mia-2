@@ -1,14 +1,6 @@
-import {
-  select,
-  classNames,
-  templates
-} from '../settings.js';
-import {
-  utils
-} from '../utils.js';
-import {
-  AmountWidget
-} from './AmountWidget.js';
+import {select, classNames, templates} from '../settings.js';
+import {utils} from '../utils.js';
+import {AmountWidget} from './AmountWidget.js';
 
 export class Product {
   constructor(id, data) {
@@ -22,7 +14,7 @@ export class Product {
     thisProduct.initOrderForm();
     thisProduct.initAmountWidget();
     thisProduct.processOrder();
-    console.log('new Product:', thisProduct);
+    //console.log('new Product:', thisProduct);
   }
 
   renderInMenu() { // odpowiada za wyświetlanie produktów w menu
@@ -63,7 +55,7 @@ export class Product {
     // const accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
 
     /* START: click event listener to trigger */
-    thisProduct.accordionTrigger.addEventListener('click', function () {
+    thisProduct.accordionTrigger.addEventListener('click', function() {
 
       /* prevent default action for event */
       event.preventDefault();
@@ -91,18 +83,18 @@ export class Product {
   initOrderForm() { // uruchamiana raz dla każdego produktu; odpowiedzialna za dodanie listenerów eventu do formularza, kontrolek, guzika dodania do koszyka; gdy będą kliknięte wywoła f przelicz zamówienie na nowo
     const thisProduct = this;
 
-    thisProduct.form.addEventListener('submit', function (event) {
+    thisProduct.form.addEventListener('submit', function(event) {
       event.preventDefault();
       thisProduct.processOrder();
     });
 
     for (let input of thisProduct.formInputs) {
-      input.addEventListener('change', function () {
+      input.addEventListener('change', function() {
         thisProduct.processOrder();
       });
     }
 
-    thisProduct.cartButton.addEventListener('click', function (event) {
+    thisProduct.cartButton.addEventListener('click', function(event) {
       event.preventDefault();
       thisProduct.processOrder();
       thisProduct.addToCart();
@@ -193,7 +185,7 @@ export class Product {
 
     thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
 
-    thisProduct.amountWidgetElem.addEventListener('updated', function () {
+    thisProduct.amountWidgetElem.addEventListener('updated', function() {
       thisProduct.processOrder();
     });
   }
@@ -214,4 +206,4 @@ export class Product {
     thisProduct.element.dispatchEvent(event);
   }
 
-}
+} // ten nawias powinien zamykać klasę Product
