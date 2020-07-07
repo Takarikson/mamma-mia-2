@@ -1,8 +1,8 @@
 /* global rangeSlider */
 
-import {BaseWidget} from './BaseWidget.js';
-import {utils} from '../utils.js';
-import {select, settings} from '../settings.js';
+import { BaseWidget } from './BaseWidget.js';
+import { utils } from '../utils.js';
+import { select, settings } from '../settings.js';
 
 export class HourPicker extends BaseWidget {
   constructor(wrapper) {
@@ -21,14 +21,14 @@ export class HourPicker extends BaseWidget {
 
     rangeSlider.create(thisWidget.dom.input);
 
-    thisWidget.dom.input.addEventListener('input', function() {
+    thisWidget.dom.input.addEventListener('input', function () {
       thisWidget.value = thisWidget.dom.input.value;
     });
 
   }
 
   parseValue(newValue) {
-    return utils.numberToHour(parseInt(newValue));
+    return utils.numberToHour(newValue);
   }
 
   isValid() {
