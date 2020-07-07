@@ -89,7 +89,7 @@ export class Booking {
       });
   }
 
-  parseData(eventsCurrent, bookings, eventsRepeat) {
+  parseData(bookings, eventsCurrent, eventsRepeat) {
     const thisBooking = this;
 
     thisBooking.booked = {};
@@ -144,9 +144,9 @@ export class Booking {
     }
   }
 
-  
 
-  updateDOM() { 
+
+  updateDOM() {
     console.log('show me updateDOM');
 
     const thisBooking = this;
@@ -161,7 +161,7 @@ export class Booking {
       }
       //console.log('tableId', tableId);
 
-      if ( 
+      if (
         typeof thisBooking.booked[thisBooking.date] != 'undefined' &&
         typeof thisBooking.booked[thisBooking.date][thisBooking.hour] != 'undefined' &&
         thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId)
