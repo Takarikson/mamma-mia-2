@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pizzeria</title>
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
+    rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
@@ -14,7 +15,6 @@
 </head>
 
 <body>
-
   <header class="header">
     <div class="container">
       <div class="header__wrapper">
@@ -23,6 +23,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="#welcome">Welcome</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -62,8 +63,99 @@
       </div>
     </div>
   </header>
-
   <div id="pages">
+    <section id="welcome">
+      <div class="welcome-wrapper container">
+        <div class="links-list">
+          <div class="image-wrapper">
+            <img src="./images/assets/pizza-1.jpg" alt="pizza-1">
+            <p class="info">Delicious food delivered to your door</p>
+            <div class="link">
+              <a href="#order" class="nav-link order">online order</a>
+            </div>
+          </div>
+          <div class="image-wrapper">
+            <img src="./images/assets/pizza-2.jpg" alt="pizza-2">
+            <div class="link">
+              <a href="#booking" class="nav-link booking">book table</a>
+            </div>
+          </div>
+        </div>
+        <div class="hours-wrapper">
+          <div class="hours">
+            <p>opening hours:<br>
+              <span>tue - sun, 12pm - 12am</span>
+            </p>
+          </div>
+        </div>
+        <div class="carousel-container">
+          <div class="carousel-wrapper">
+            <div class="carousel-box">
+              <img class="carousel-image" src="./images/assets/pizza-3.jpg" alt="pizza-3">
+            </div>
+            <div class="carousel-review-wrapper carousel-box">
+              <p class="review-title"></p>
+              <p class="review-text"></p>
+              <p class="review-author"></p>
+            </div>
+          </div>
+          <div class="carousel-dots">
+            <i id="dot-1" class="fas fa-circle"></i>
+            <i id="dot-2" class="fas fa-circle"></i>
+            <i id="dot-3" class="fas fa-circle"></i>
+          </div>
+        </div>
+        <div class="galery-container">
+          <div class="galery-wrapper">
+            <div class="galery-image-wrapper">
+              <img class="gallery-image" src="./images/assets/pizza-4.jpg" alt="pizza-4">
+              <div class="icon">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+            <div class="galery-image-wrapper">
+              <img class="gallery-image" src="./images/assets/pizza-5.jpg" alt="pizza-5">
+              <div class="icon">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+            <div class="galery-image-wrapper">
+              <img class="gallery-image" src="./images/assets/pizza-6.jpg" alt="pizza-6">
+              <div class="icon">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+            <div class="galery-image-wrapper">
+              <img class="gallery-image" src="./images/assets/pizza-7.jpg" alt="pizza-7">
+              <div class="icon">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+            <div class="galery-image-wrapper">
+              <img class="gallery-image" src="./images/assets/pizza-8.jpg" alt="pizza-8">
+              <div class="icon">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+            <div class="galery-image-wrapper">
+              <img class="gallery-image" src="./images/assets/pizza-9.jpg" alt="pizza-9">
+              <div class="icon">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <a class="footer-link" href="#">View more on Instagram</a>
+        </div>
+      </div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -71,7 +163,6 @@
       <div class="booking-wrapper container"></div>
     </section>
   </div>
-
   <script id="template-booking-widget" type="text/x-handlebars-template">
     <div class="booking-widget">
       <h2 class="page__title no-spacing">Book a table</h2>
@@ -137,7 +228,6 @@
       </form>
     </div>
   </script>
-
   <script id="template-cart-product" type="text/x-handlebars-template">
     <li>
       <div class="widget-amount"> <!-- widget-amount -->
@@ -165,7 +255,6 @@
       </ul>
     </li>
   </script>
-
   <script id="template-menu-product" type="text/x-handlebars-template">
     <article class="product"> <!-- product -->
 
@@ -244,7 +333,6 @@
 
     </article> <!-- .product -->
   </script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
