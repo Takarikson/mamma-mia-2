@@ -1,50 +1,59 @@
-export class BaseWidget {
+class BaseWidget {
   constructor(wrapperElement, initialValue) {
     const thisWidget = this;
-
-    thisWidget.dom = {}; //tworzymy obiekt
-    thisWidget.dom.wrapper = wrapperElement; // zapisujemy w nim właściwosć wrapper której wartością ma byc argument wrapperElement
-    thisWidget.correctValue = initialValue; // we własciwosci thisWidget.correctValue zapisujemy wartosć argumentu initialValue
+    thisWidget.dom = {};
+    thisWidget.dom.wrapper = wrapperElement;
+    thisWidget.correctValue = initialValue;
   }
 
-  get value() { // uruchomi się przy próbie odczytania wartości
+  get value() {
     const thisWidget = this;
-
     return thisWidget.correctValue;
   }
 
-  set value(assignedValue) { // uruchomi sie przy próbie zmiany wartości value
+  set value(value) {
     const thisWidget = this;
 
-    const newValue = thisWidget.parseValue(assignedValue); // parseValue ma konwertować liczbę z tekstu wpisanego w inpucie na liczbę
+    const newValue = thisWidget.parseValue(value);
 
+    /*  Add validation */
     if (newValue != thisWidget.correctValue && thisWidget.isValid(newValue)) {
+
       thisWidget.correctValue = newValue;
       thisWidget.announce();
     }
+
     thisWidget.renderValue();
   }
 
-  parseValue(newValue) { // jeśli jej się nie uda zwraca NaN
-    return parseInt(newValue);
+  setValue(value) {
+    const thisWidget = this;
+
+    thisWidget.value = value;
+  }
+  /* do przekształcenia wartosci ktora chemy ustawic na odpowiedni typ lub format, musi byc liczba ale to co użytkownik wpisuje jest tekstem */
+  parseValue(value) {
+    return parseInt(value);
   }
 
-  isValid(newValue) {
-    return !isNaN(newValue); // prawda oznacza to nie jest NaN
+  isValid(value) {
+    return !isNaN(value);
   }
 
+  /* aby biezaca wartosc widgetu zostala wyswietlona na stronie */
   renderValue() {
-    //const thisWidget = this;
-    //console.log('widget value:', thisWidget.value);
+    const thisWidget = this;
+
+    thisWidget.dom.wrapper.innerHTML = thisWidget.value;
   }
 
   announce() {
     const thisWidget = this;
 
     const event = new CustomEvent('updated', {
-      bubbles: true // dzieki właściwości bubles którą włączyliśmy po wykonaniu eventu na jakimś elemencie będzie on przekazywany rodzicowi i rodzicowi rodzica aż do body, document i window
+      bubbles: true
     });
-    thisWidget.dom.wrapper.dispatchEvent(event); // dom.wrapper to element na którym wywołujemy event
+    thisWidget.dom.wrapper.dispatchEvent(event);
   }
-
-} // zamkniecie klasy BaseWidget
+}
+export default BaseWidget;

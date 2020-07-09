@@ -1,9 +1,9 @@
 #pages {
-  > * {
+  >* {
     display: none;
   }
 
-  > .active {
+  >.active {
     display: block;
   }
 }
@@ -25,18 +25,18 @@
 }
 
 .booking-option-title {
-  @extend .h2;
+  @extend %h2;
   display: block;
   margin: 0 0 ($base-size * 2) 0;
 
-  > .widget-amount {
+  >.widget-amount {
     margin: ($base-size * 2) 0 0 0;
   }
 
 }
 
 .page__title {
-  @extend .h1;
+  @extend %h1;
   margin: 0 0 ($base-size * 4) 0;
   text-align: center;
 }
@@ -74,9 +74,9 @@
     }
 
     &__horizontal {
-      width: ($base-size * 2);
-      height: ($base-size * 2);
-      top: -6px;
+      width: ($base-size * 1.67);
+      height: ($base-size * 1.67);
+      top: -5px;
       background: $color-dark;
     }
 
@@ -106,16 +106,16 @@
   background-size: ($base-size * 3);
   background-repeat: repeat;
 
-  > * {
+  >* {
     position: absolute;
     text-align: center;
     vertical-align: center;
   }
 
   .object {
-    @extend .h3;
+    @extend %h3;
     background: #f7f1e3;
-    box-shadow: 0 0 12px rgba(0,0,0,0.2);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
   }
 
   .entry {
@@ -140,7 +140,7 @@
   }
 
   .table {
-    @extend .h2;
+    @extend %h2;
     width: 70px;
     height: 70px;
     line-height: 70px;

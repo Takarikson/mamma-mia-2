@@ -1,0 +1,230 @@
+/* Global */
+
+.main-nav {
+  .order,
+  .booking {
+    display: none;
+  }
+}
+
+.home-wrapper {
+  margin: 42px auto;
+  padding: 72px 48px;
+  background: $color-light;
+  border-bottom: 1px solid #e6e6e6;
+  border-radius: $radius;
+  font-family: $font-header;
+}
+
+h4 {
+  @extend %h4;
+}
+
+/* Box order and booking */
+
+.home-order-booking {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  color: $color-light;
+
+  .home-order {
+    background-image: url('../../images/pizza-1.jpg');
+    margin-right: 10px;
+  }
+
+  .home-booking {
+    background-image: url('../../images/pizza-2.jpg');
+  }
+
+
+  .box {
+    position: relative;
+    width: 100%;
+    height: 125px;
+    text-align: center;
+    background-position: center;
+    background-size: cover;
+    border-radius: $radius;
+    cursor: pointer;
+
+    .inner-box {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 11%;
+      transition: $transition;
+
+      &:hover {
+        top: -15%;
+
+        h4 {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+/* Box opening hours */
+
+.opening-hours-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 125px;
+  text-align: center;
+  border-radius: $radius;
+  background-color: #fe6b6b;
+  color: $color-light;
+  margin: 10px 0 60px;
+
+  h4 {
+    margin: 0;
+  }
+
+  p {
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+}
+
+/*Quotes */
+.quote-wrapper {
+  .quote-all {
+    display: flex;
+    margin: 30px 0 10px;
+
+    .quote-img {
+      flex: 1;
+      width: 190px;
+      height: 190px;
+      margin-right: 40px;
+      border-radius: $radius;
+      background-image: url('../../images/pizza-3.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .quote-text {
+      flex: 2;
+      font-family: $font-text;
+
+      p:nth-child(1) {
+        text-transform: uppercase;
+        font-weight: $font-bold;
+      }
+
+      p:nth-child(3) {
+        font-style: italic;
+      }
+    }
+  }
+}
+
+/* slick dots */
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+
+  margin: 0;
+  padding: 20px 0;
+
+  list-style: none;
+
+  li {
+    margin: 0 5px;
+  }
+
+  button {
+    display: block;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+
+    border: none;
+    border-radius: 100%;
+    border: black;
+    background-color: grey;
+
+    text-indent: -9999px;
+  }
+
+  li.slick-active button {
+    background-color: black;
+  }
+
+}
+
+/* Gallery */
+
+.home-gallery {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .gallery-img {
+    flex-basis: 31.5%;
+    position: relative;
+    height: 180px;
+    margin: 5px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &::before {
+      position: absolute;
+      display: none;
+      content: "";
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000000;
+      opacity: 0.4;
+    }
+
+    &:hover::before {
+      display: block;
+    }
+
+    &:hover .gallery-icons {
+      display: block;
+    }
+  }
+
+  .gallery-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    font-size: 25px;
+
+    a {
+      color: $color-light;
+      margin: 4px;
+
+      &:hover .fa-heart {
+        color: #ff0000;
+      }
+    }
+  }
+}
+
+/* Footer */
+
+.home-footer {
+  font-family: $font-text;
+  margin-top: 20px;
+
+  .footer {
+    color: #fe6b6b;
+  }
+}

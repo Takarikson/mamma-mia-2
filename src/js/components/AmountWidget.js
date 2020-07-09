@@ -1,52 +1,56 @@
-import {select, settings} from '../settings.js';
+import {
+  settings,
+  select
+} from '../settings.js';
+import BaseWidget from './BaseWidget.js';
 
-import {BaseWidget} from './BaseWidget.js';
-
-export class AmountWidget extends BaseWidget { // informujemy że klasa jest rozszerzeniem klasy BW czyli będzie z niej dziedziczyć
-  constructor(wrapper) {
-    super(wrapper, settings.amountWidget.defaultValue); // wywołanie f super zawsze na początku constructora - to konstruktor klasy BaseWidget. Właśnie dlatego podaliśmy mu dwa argumenty: element który jest wrapperem widgetu, oraz domyślną wartość odczytaną z obiektu settings.
-
+class AmountWidget extends BaseWidget {
+  constructor(element) {
+    super(element, settings.amountWidget.defaultValue);
     const thisWidget = this;
-
-    thisWidget.getElements();
+    thisWidget.getElements(element);
+    // thisWidget.value = settings.amountWidget.defaultValue;
+    // thisWidget.setValue(thisWidget.dom.input.value);
     thisWidget.initActions();
+    console.log('AmountWidget:', thisWidget);
+    console.log('constructor arguments:', element);
   }
-
   getElements() {
     const thisWidget = this;
 
+    // thisWidget.dom.wrapper = element;
     thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.amount.input);
     thisWidget.dom.linkDecrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkDecrease);
     thisWidget.dom.linkIncrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);
   }
-
-  isValid(newValue){ // metoda nieco nadpisana wzgledem isValid z BW; dla AW setter z BW będzie korzystał z tej nadpisanej wersji
-    return !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax;
+  /* nadpisana metoda ktora jest w klasie nadrzednej BaseWidget */
+  isValid(value) {
+    return !isNaN(value) &&
+      value >= settings.amountWidget.defaultMin &&
+      value <= settings.amountWidget.defaultMax;
   }
-
-  initActions() {
-
-    const thisWidget = this;
-
-    thisWidget.dom.input.addEventListener('change', function() {
-      thisWidget.value = thisWidget.dom.input.value;
-    });
-
-    thisWidget.dom.linkDecrease.addEventListener('click', function(event) {
-      event.preventDefault();
-      thisWidget.value = --thisWidget.dom.input.value;
-    });
-
-    thisWidget.dom.linkIncrease.addEventListener('click', function(event) {
-      event.preventDefault();
-      thisWidget.value = ++thisWidget.dom.input.value;
-    });
-  }
-
-  renderValue(){
+  /* aby biezaca wartosc widgetu zostala wyswietlona na stronie */
+  renderValue() {
     const thisWidget = this;
 
     thisWidget.dom.input.value = thisWidget.value;
   }
 
-} // zamkniecie klasy AmountWidget
+  initActions() {
+    const thisWidget = this;
+    thisWidget.dom.input.addEventListener('change', function () {
+      // thisWidget.setValue(thisWidget.dom.input.value);
+      thisWidget.value = thisWidget.dom.input.value;
+    });
+    thisWidget.dom.linkDecrease.addEventListener('click', function (event) {
+      event.preventDefault();
+      thisWidget.setValue(thisWidget.value - 1);
+    });
+    thisWidget.dom.linkIncrease.addEventListener('click', function (event) {
+      event.preventDefault();
+      thisWidget.setValue(thisWidget.value + 1);
+    });
+  }
+
+}
+export default AmountWidget;

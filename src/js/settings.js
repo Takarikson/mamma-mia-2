@@ -1,6 +1,5 @@
 /* global Handlebars */
 
-
 export const select = {
   templateOf: {
     menuProduct: '#template-menu-product',
@@ -45,7 +44,7 @@ export const select = {
   cart: {
     productList: '.cart__order-summary',
     toggleTrigger: '.cart__summary',
-    totalNumber: '.cart__total-number',
+    totalNumber: `.cart__total-number`,
     totalPrice: '.cart__total-price strong, .cart__order-total .cart__order-price-sum strong',
     subtotalPrice: '.cart__order-subtotal .cart__order-price-sum strong',
     deliveryFee: '.cart__order-delivery .cart__order-price-sum strong',
@@ -64,15 +63,18 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    bookingPhone: '.booking-form [name="phone"]',
+    bookingAddress: '.booking-form [name="address"]',
+    starters: '.booking-form [type="checkbox"]',
     bookingForm: '.booking-form',
-    bookTable: '.booking-form [type="submit"]',
-    bookPhone: '.booking-form [name="phone"]',
-    bookAddress: '.booking-form [name="address"]',
-    starters: '[name="starter"]',
   },
   nav: {
     links: '.main-nav a',
   },
+  homeLinks: {
+    order: '.home-order',
+    booking: '.home-booking',
+  }
 };
 
 export const classNames = {
@@ -86,7 +88,6 @@ export const classNames = {
   booking: {
     loading: 'loading',
     tableBooked: 'booked',
-    tableSelected: 'selected',
   },
   nav: {
     active: 'active',
@@ -106,19 +107,16 @@ export const settings = {
     defaultMin: 1,
     defaultMax: 9,
   },
-
   datePicker: {
-    maxDaysInFuture: 30,
+    maxDaysInFuture: 14,
   },
   cart: {
     defaultDeliveryFee: 20,
   },
-
   booking: {
     tableIdAttribute: 'data-table',
   },
   db: {
-
     url: '//' + window.location.hostname + (window.location.hostname == 'localhost' ? ':3131' : ''),
     product: 'product',
     order: 'order',
@@ -129,9 +127,7 @@ export const settings = {
     notRepeatParam: 'repeat=false',
     repeatParam: 'repeat_ne=false',
   },
-
 };
-
 
 export const templates = {
   menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
