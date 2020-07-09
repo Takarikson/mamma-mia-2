@@ -279,7 +279,7 @@ export class Booking {
     });
 
     thisBooking.dom.submitButton.addEventListener('click', function () {
-      // event.preventDefault();
+      event.preventDefault();
       thisBooking.sendReservation();
       console.log('reservation done!!!');
     });
